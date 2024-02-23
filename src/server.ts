@@ -14,7 +14,7 @@ app.get("/:id/:name", ({params: {id, name}}) => {
 })
 
 app.get("/user/:id", ({params: {id}}) => {
-  return `This is a user number that's passed by url: ${id}`
+  return `The url number ${id}`
 }, {
   params: t.Object({
     id: t.Numeric() 
@@ -27,8 +27,8 @@ app.state('value', 10).get("/state", ({store}) => {
 
 app.all("/", ({set}) => { // This path route can be get, post, delete or anything 
   const header = set.headers['Content-Type'] = 'Hello everyone'
-  const video = Bun.file("src/assets/test.txt")
-  return new Response(video)
+  const text = Bun.file("src/assets/test.txt")
+  return new Response(text)
 })
 
 app.onError(({ code }) => { 
